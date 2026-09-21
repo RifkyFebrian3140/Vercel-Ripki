@@ -1,31 +1,22 @@
-
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/**/*.php",
-      "use": "vercel-php@0.9.0"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "vercel-php@0.9.0"
     }
-  ],
+  },
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "^/assets/(.*)$",
+      "dest": "/assets/$1"
     },
     {
       "src": "^/$",
       "dest": "/api/index.php"
     },
     {
-      "src": "^/alatkemah/(.*)$",
-      "dest": "/api/alatkemah/$1"
-    },
-    {
-      "src": "^/anggota/(.*)$",
-      "dest": "/api/anggota/$1"
+      "src": "^/(.*)$",
+      "dest": "/api/$1"
     }
   ]
 }
