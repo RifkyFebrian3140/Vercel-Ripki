@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -8,8 +9,19 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "api/$1"
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/$",
+      "dest": "/api/index.php"
+    },
+    {
+      "src": "^/alatkemah/(.*)$",
+      "dest": "/api/alatkemah/$1"
+    },
+    {
+      "src": "^/anggota/(.*)$",
+      "dest": "/api/anggota/$1"
     }
   ]
 }
