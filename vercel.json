@@ -1,23 +1,15 @@
-
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "api/**/*.php": {
-      "runtime": "vercel-php@0.9.0"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.php",
+      "use": "vercel-php@0.9.0"
     }
-  },
-  "rewrites": [
+  ],
+  "routes": [
     {
-      "source": "/",
-      "destination": "/api/index.php"
-    },
-    {
-      "source": "/alatkemah/:path*",
-      "destination": "/api/alatkemah/:path*"
-    },
-    {
-      "source": "/anggota/:path*",
-      "destination": "/api/anggota/:path*"
+      "src": "/(.*)",
+      "dest": "api/$1"
     }
   ]
 }
